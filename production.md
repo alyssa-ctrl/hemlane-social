@@ -139,7 +139,25 @@ The prior warnings for IMG_0407 (tag 4, vertical flip) and IMG_2204, IMG_7946, I
 
 **Cost: 8 credits for 20.5 seconds**, roughly 0.4 credits a second. Creator plan carries 493. Four reels a month is about 32, under 7%. Cost is not the constraint. **Re-renders are.** A regeneration costs the same as the original, so lock the script before generating.
 
-**Never use the 12 photo_avatar looks.** Generic names, unverified provenance, and they collide with the authenticity rule. The digital twin is trained on real footage and is the only sanctioned look.
+**Photo avatar looks: provenance confirmed, cleared for use.** The prior instruction here said never use the twelve photo_avatar looks, on the grounds of generic names and unverified provenance. The operator confirmed on 30 July 2026 that they are built from real footage of Alyssa, which resolves the authenticity objection the rule rested on. The auto-generated names ("Professional in gray suit") are cosmetic.
+
+**The sanctioned pack, five portrait looks at 608x1080**, all in group `49256bc6eeec4bbaaae6abba0995f2d1`, all supporting `avatar_v`:
+
+| Look | ID |
+|---|---|
+| Smiling professional, white shirt | `4b7986a3e5cc4ef99314328843a0158c` |
+| Professional, navy blue blazer | `b26d272c37854234a2925814166a7fb8` |
+| Professional, gray suit | `d20966fa44a04f71ac67f6d953a99502` |
+| Smiling professional, grey blazer | `42248b1d7a0d45ca8cc31f679bf945f1` |
+| Woman in grey blazer | `70e8748c8fe3446e84e038e5db4602f4` |
+
+Rotate the look each week so the Wednesday slot varies across the grid.
+
+**Two higher-resolution looks** at 2316x3088, both named "Photo Avatar": `39228e65612c41b1b70d64bbc4512b06` and `0a092fd8bf374fa7ac7bd0641e0e0386`. Fallback if the 608x1080 sources render soft at 1080x1920.
+
+**Five looks are landscape 1920x1080** and crop badly into 9:16. Do not use for reels: `f54b4af6`, `da2e7ed9`, `c7b70338`, `91e10270`, `3f3433e0`.
+
+**The digital twin** `0f270cbd60444499abddbdc7061998fc` remains valid and is what the superseded batch `6240c1cf2f8f4c83a2001df10dffb30e` used.
 
 Batch with `create_video_batch`, poll with `bulk_video_statuses`. Output URLs stay live about seven days, which is long enough to push into Ordinal without the GitHub token.
 
