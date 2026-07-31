@@ -6,7 +6,7 @@ Two things to have ready before you start:
 - **A GitHub fine-grained token** scoped to `alyssa-ctrl/hemlane-social`, Contents Read and write. Paste it when asked. Without it, tiles come to you as files and you drag them into the repo yourself; both routes work.
 - **Jacob's master resolution.** Confirm it is at least 1080 tall, or Phase 3 stalls.
 
-**Do not let it re-render the HeyGen reels.** Four already exist and cost 32 credits. Batch `6240c1cf2f8f4c83a2001df10dffb30e`. The prompt below tells it to reuse them.
+**The HeyGen reels are generated fresh in this run**, on the five-look photo avatar pack. An earlier batch (`6240c1cf2f8f4c83a2001df10dffb30e`) rendered the same four scripts on the digital twin and is superseded. Budget 32 credits against 493.
 
 ---
 
@@ -64,6 +64,7 @@ GT Standard is not licensed here. Inter is the sanctioned fallback. Never Calade
 - `api.github.com` is not proxy-blocked; it rate-limits unauthenticated calls. Use codeload or raw for reads.
 - The three iPhone clips (IMG_4410, IMG_0382, IMG_0369) are **not** in the repo and are being reshot. Do not plan around them.
 - The 640x360 unusable recording lives **inside** Jacob's Descript project. Name-matching on "Recording" grabs the wrong file.
+- **The photo avatar looks are cleared.** `production.md` previously said never use the twelve photo_avatar looks on provenance grounds. The operator has confirmed they are built from real footage of her. The five 608x1080 portrait looks are the sanctioned set for this month. Do not revert to the digital twin.
 
 ## Phase 0 — Ledger
 
@@ -91,20 +92,36 @@ Known and accepted: six of seven templates use three font weights against `visua
 
 ## Phase 2 — HeyGen avatar reels
 
-**Already rendered. Do not create a new batch.** Poll `bulk_video_statuses` with batch `6240c1cf2f8f4c83a2001df10dffb30e`:
+**Generate these four.** Rotate the avatar look each week so the Wednesday slot does not read as the same frame four times.
 
-| Date | Video ID | Script |
-|---|---|---|
-| Aug 5 | `6cab1b92b0077bbde5399d6eec5c1eec` | AI hard half / thermostat batteries / Jacob's $100 |
-| Aug 12 | `d371b0e4f9c3d83b16182f057c410f19` | Automation raised activity, not effectiveness |
-| Aug 19 | `79fd62cf036a65fb218e1a5e2e44768e` | PM companies will not exist in ten years |
-| Aug 26 | `bcf8ec2c70c1aa322a935a33d16a07ae` | Renewal process in one head is a dependency |
+| Date | Look | Look ID (`avatar_id`) | Script |
+|---|---|---|---|
+| Aug 5 | Smiling professional, white shirt | `4b7986a3e5cc4ef99314328843a0158c` | AI hard half / thermostat batteries / Jacob's $100 |
+| Aug 12 | Professional, navy blue blazer | `b26d272c37854234a2925814166a7fb8` | Automation raised activity, not effectiveness |
+| Aug 19 | Professional, gray suit | `d20966fa44a04f71ac67f6d953a99502` | PM companies will not exist in ten years |
+| Aug 26 | Smiling professional, grey blazer | `42248b1d7a0d45ca8cc31f679bf945f1` | Renewal process in one head is a dependency |
 
-Config used: digital twin `0f270cbd60444499abddbdc7061998fc`, avatar group `49256bc6eeec4bbaaae6abba0995f2d1`, voice `f5c05aa29c3f4cbcafc5b615c8c43cde`, `avatar_v`, 9:16, 1080p, SRT sidecar plus burned `default` captions.
+Spare from the same pack, unused this month: `70e8748c8fe3446e84e038e5db4602f4` (Woman in grey blazer).
 
-Every script ends with "This is my avatar. The real Alyssa is with customers." The container cannot reach the HeyGen CDN, so an overlay cannot be burned in post; putting the disclosure in the script is the only way it lands on frame via the captions. All four scripts deliberately avoid leasing, screening and tenant selection.
+All five are `photo_avatar` looks in group `49256bc6eeec4bbaaae6abba0995f2d1`, all support `avatar_v`, all portrait at 608x1080.
 
-Pull a still from the Aug 5 render for the Wednesday feed tile. **Stop.**
+Shared config: avatar group `49256bc6eeec4bbaaae6abba0995f2d1`, voice `f5c05aa29c3f4cbcafc5b615c8c43cde`, engine `avatar_v`, 9:16, 1080p, caption `{file_format: srt, style: default}`. Submit as one `create_video_batch`, poll `bulk_video_statuses`.
+
+**Check the first render before trusting the other three.** The source looks are 608x1080 and the output is 1080x1920. Avatar V regenerates rather than scaling the still, so this may be a non-issue, but confirm sharpness on the Aug 5 render before the set is treated as final. The two looks at 2316x3088 (`39228e65612c41b1b70d64bbc4512b06`, `0a092fd8bf374fa7ac7bd0641e0e0386`) are the fallback if quality disappoints.
+
+### The four scripts, verbatim
+
+**Aug 5.** Most of the AI in this industry points at the half that was already easy. The hard half is two in the morning when a pipe goes and nobody is awake. Ours checks the thermostat batteries before it dispatches anyone. Jacob Carroll runs fifteen units and puts a wasted trip at a hundred dollars. This is my avatar. The real Alyssa is with customers.
+
+**Aug 12.** You automated the rent reminders. Delinquency did not move. That is the tell. Automation raises activity, and activity is not effectiveness. The reminder was never the reason people paid late. Find the reason first, then automate the thing that actually moves it. This is my avatar. The real Alyssa is with customers.
+
+**Aug 19.** Property management companies as we know them will not exist in ten years. Not because software replaces them. Because the ones that survive stop selling hours and start selling outcomes, and you cannot sell an outcome you have never measured. Start measuring now. This is my avatar. The real Alyssa is with customers.
+
+**Aug 26.** If your renewal process lives in one person's head, that is not a process. That is a dependency. Portfolios stall at sixty doors for exactly this reason. The fix is boring and it works. Write it down, then let the system run it. This is my avatar. The real Alyssa is with customers.
+
+Every script closes with the disclosure. The container cannot reach the HeyGen CDN, so an overlay cannot be burned in post; putting it in the script is the only route to an on-frame disclosure via the captions. All four deliberately avoid leasing, screening and tenant selection.
+
+Pull a still from each render for that week's Wednesday feed tile. **Stop.**
 
 ## Phase 3 — Reels from footage
 
